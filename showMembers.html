@@ -1,0 +1,104 @@
+
+
+
+
+
+<table id="" class="display2 table table-striped" cellspacing="1" cellpadding="1" width="100%"
+    style="font-size: medium; background-color: #e0e0e0; border: 2px solid; border-radius: .40rem; border-color: #EDEFF2; color: rgb(0, 0, 0);">
+    <thead style="background-color: #145D56; border-radius: 30%;">
+        <tr style="color: #FFC728; background-color: rgb(42, 64, 77);">
+            <th style="width: 10px; text-align: center;">#</th>
+            <th style="width: 155px; text-align: center;">Socio / N°</th>
+            <th style="width: 110px; text-align: center;">Bibliotecaria</th>
+            <th style="width: 300px; text-align: center;">Libro / N° inventario</th>
+            <th style="width: 60px; font-size: 84%; text-align: center;">Fecha de Inicio</th>
+            <th style="width: 60px; font-size: 84%; text-align: center;">Fecha de Devolución</th>
+            <th style=" text-align: center;">Estado</th>
+            <th style="text-align: center;">Acciones</th>
+        </tr>
+    </thead>
+    <tbody style="font-size: 90%;">
+        {% for prestamo in prestamos %}
+        <tr style="border-color: rgb(155, 155, 155);">
+            <td>{{loop.index}}</td>
+            <td data-label="Socio" style="text-align: left;"><button type="button" class="btnShowMember btn-info"
+                    data-bs-toggle="modal" data-bs-target="#staticBackdrop2" title="Ver Socio" style="width: auto;">
+                    <i class="uil uil-user"></i></button> {{prestamo.2}} {{prestamo.3}} / {{prestamo.1}}</td>
+            <td data-label="Bibliotecaria" style="text-align: left;">{{prestamo.9}} {{prestamo.10}}</td>
+            <td data-label="Libro" style="text-align: left;">{{prestamo.11}} / {{prestamo.12}}</td>
+            <td data-label="Fecha de Inicio" style="text-align: center;">{{prestamo.13}}</td>
+            <td data-label="Fecha de Devolución" style="text-align: center;">{{prestamo.14}}</td>
+            <td data-label="Estado" style="text-align: left;">{{prestamo.15}}</td>
+            <td data-label="Acciones" style="text-align: center;">
+                <button type="button" class="btnMember btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                    title="Registrar Prestamo" style="width: auto;">
+                    <i class="uil uil-history-alt"></i></button>
+
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="uil uil-history-alt"
+                                        style="color: #145D56;"></i> Registrar Devolución</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                    style="font-size: medium;"></button>
+                            </div>
+                            <div class="modal-body" style="margin-top: -3%; margin-bottom: -2%;">
+                                <i class="uil uil-history-alt" style="font-size: 50px; color: #145D56"></i>
+                                <p style="font-size: medium;">¿Deseas registrar el libro como devolución?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary buttModal2"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <abbr title="Registrar Devolución"><a href="/formDevolution/{{prestamo.0}}"
+                                        class="btn btn-primary buttModal">Aceptar</a></abbr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="uil uil-user"
+                                        style="color: #145D56;"></i> Ver Socio</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                    style="font-size: medium;"></button>
+                            </div>
+                            <div class="modal-body" style="margin-top: -3%; margin-bottom: -2%;">
+                                <i class="uil uil-user" style="font-size: 50px; color: #145D56;"></i>
+                                <p style="font-size: medium; text-align: left;">
+                                    <i class="uil uil-angle-right-b" style="color: #145D56;"></i> N° Socio:
+                                    {{prestamo.1}}
+                                </p>
+                                <br<br>
+                                    <p style="font-size: medium; text-align: left;">
+                                        <i class="uil uil-angle-right-b" style="color: #145D56;"></i> Nombre:
+                                        {{prestamo.3}}
+                                    </p>
+                                    <br<br>
+                                        <p style="font-size: medium; text-align: left;">
+                                            <i class="uil uil-angle-right-b" style="color: #145D56;"></i> Apellido:
+                                            {{prestamo.2}}
+                                        </p>
+                                        <br<br>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary buttModal2"
+                                    data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+
+
+        {% endfor %}
+    </tbody>
+</table>
